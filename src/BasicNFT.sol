@@ -25,5 +25,7 @@ contract basicNFT{
 
     function tokenURI(uint tokenId) public view override returns (string memory){
 
+        return s_tokenIdToUri[tokenId];
+
     }
 }
