@@ -3,15 +3,15 @@
 pragma solidity ^0.8.18;
 
 import {Script} from "../lib/forge-std/src/Script.sol";
-import {BasicNFT} from "../src/BasicNFT.sol";
+import {BasicNft} from "../src/BasicNft.sol";
 
 contract DeployBasicNft is Script{
 
 
-    function run() external returns (BasicNFT){
+    function run() external returns (BasicNft){
 
         vm.startBroadcast();
-        BasicNFT basicNft= new BasicNFT();
+        BasicNft basicNft= new BasicNft();
         vm.stopBroadcast();
 
         return basicNft;
