@@ -1,0 +1,59 @@
+{
+  "transactions": [
+    {
+      "hash": "0x20adf86ce34fd50e7188ebbb5d2945b018d889ff74fc8e2c180839f53b4eb109",
+      "transactionType": "CALL",
+      "contractName": "BasicNft",
+      "contractAddress": "0xBcb3300D9a4fB01030E7e73752664388abC242ce",
+      "function": "mintNft(string)",
+      "arguments": [
+        "\"ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json\""
+      ],
+      "transaction": {
+        "type": "0x02",
+        "from": "0xacbba58dcf3de45dd45d12ce258b43f2eb8a739e",
+        "to": "0xbcb3300d9a4fb01030e7e73752664388abc242ce",
+        "gas": "0x31d9d",
+        "value": "0x0",
+        "data": "0xda86f4a900000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000057697066733a2f2f62616679626569673337696f6972373673376d67356f6f6265746e636f6a636d3363336878617379643472766964346a71687934676b61686567342f3f66696c656e616d653d302d5055472e6a736f6e000000000000000000",
+        "nonce": "0x24",
+        "accessList": []
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    },
+    {
+      "hash": "0x32061bdb8bc9b807355518aa9e203c3cb573f642c74d4f74f5933950740b6868",
+      "transactionType": "CALL",
+      "contractName": "BasicNft",
+      "contractAddress": "0xBcb3300D9a4fB01030E7e73752664388abC242ce",
+      "function": "mintNft(string)",
+      "arguments": [
+        "\"ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json\""
+      ],
+      "transaction": {
+        "type": "0x02",
+        "from": "0xacbba58dcf3de45dd45d12ce258b43f2eb8a739e",
+        "to": "0xbcb3300d9a4fb01030e7e73752664388abc242ce",
+        "gas": "0x31d9d",
+        "value": "0x0",
+        "data": "0xda86f4a900000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000057697066733a2f2f62616679626569673337696f6972373673376d67356f6f6265746e636f6a636d3363336878617379643472766964346a71687934676b61686567342f3f66696c656e616d653d302d5055472e6a736f6e000000000000000000",
+        "nonce": "0x25",
+        "accessList": []
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [],
+  "libraries": [],
+  "pending": [
+    "0x20adf86ce34fd50e7188ebbb5d2945b018d889ff74fc8e2c180839f53b4eb109",
+    "0x32061bdb8bc9b807355518aa9e203c3cb573f642c74d4f74f5933950740b6868"
+  ],
+  "returns": {},
+  "timestamp": 1703864115,
+  "chain": 11155111,
+  "multi": false,
+  "commit": "1ab0647"
+}

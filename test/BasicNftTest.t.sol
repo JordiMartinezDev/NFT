@@ -12,7 +12,7 @@ contract BasicNftTest is Test{
     DeployBasicNft public deployer;
     BasicNft public basicNft;
     address public USER = makeAddr("user");
-    string public constant patonIpfsImgUrl = "https://ipfs.io/ipns/k51qzi5uqu5dk2bqde7fgmi263t3qibkzen64vzzjg7zkcixpmshs9gafrro1t";
+    string public constant patonIpfsImgUrl = "https://i.pinimg.com/originals/66/03/b7/6603b76f5332cfe06c72688028a9f1b2.png";
 
     function setUp() public{
         deployer = new DeployBasicNft();
