@@ -3,8 +3,9 @@
 
 pragma solidity ^0.8.18;
 
-import {Test} from "../lib/forge-std/src/Test.sol";
+import {Test, console} from "../lib/forge-std/src/Test.sol";
 import {MoodNft} from "../src/MoodNft.sol";
+
 
 contract MoodTest is Test{
 
@@ -15,6 +16,13 @@ contract MoodTest is Test{
     function setUp() public{
 
         moodNft = new MoodNft(SAD_SVG_IMG_URI, HAPPY_SVG_IMG_URI);
+    }
+
+    function testViewTokenURI() public {
+
+        moodNft.mintNft();
+        console.log(moodNft.tokenURI(0));
+
     }
     
 }
