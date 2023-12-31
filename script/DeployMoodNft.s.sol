@@ -15,4 +15,8 @@ contract DeployMoodNft is Script{
 
     }
 
+    function svgToImgURI(string memory svg) public pure returns (string memory){
+        
+    }
+
 }
