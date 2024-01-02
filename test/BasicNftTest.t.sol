@@ -45,4 +45,8 @@ contract BasicNftTest is Test{
 
     }
 
+    function assertStringsEqual(string memory expected, string memory actual, string memory message) internal pure {
+        assert(keccak256(abi.encodePacked(expected)) == keccak256(abi.encodePacked(actual)), message);
+    }
+
 }
