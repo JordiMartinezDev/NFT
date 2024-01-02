@@ -30,6 +30,12 @@ contract BasicNftTest is Test{
 
     }
 
+    function testSymbolIsCorrect() public view {
+        string memory expectedSymbol = "PTNS";
+        string memory actualSymbol = basicNft.symbol();
+        assertStringsEqual(expectedSymbol, actualSymbol, "Incorrect symbol");
+    }
+
     function testCanMintAndHaveBalance() public{
         vm.prank(USER);
         basicNft.mintNft(patonIpfsImgUrl);
