@@ -28,5 +28,23 @@ contract MoodTest is Test{
         console.log(moodNft.tokenURI(0));
 
     }
+    function testMoodFlip() public {
+    vm.prank(USER);
+    moodNft.mintNft();
     
+    // Ensure the initial mood is happy
+    assert(moodNft.s_tokenIdToMood(0) == MoodNft.Mood.HAPPY, "Initial mood should be happy");
+
+    // Flip the mood
+    moodNft.flipMood(0);
+
+    // Ensure the mood is now sad
+    assert(moodNft.s_tokenIdToMood(0) == MoodNft.Mood.SAD, "Mood should be sad after flipping");
+
+    // Flip the mood again
+    moodNft.flipMood(0);
+
+    // Ensure the mood is back to happy
+    assert(moodNft.s_tokenIdToMood(0) == MoodNft.Mood.HAPPY, "Mood should be happy after flipping again");
+}
 }

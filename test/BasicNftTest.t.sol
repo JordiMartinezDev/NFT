@@ -36,6 +36,7 @@ contract BasicNftTest is Test{
         assertStringsEqual(expectedSymbol, actualSymbol, "Incorrect symbol");
     }
 
+    
     function testCanMintAndHaveBalance() public{
         vm.prank(USER);
         basicNft.mintNft(patonIpfsImgUrl);
