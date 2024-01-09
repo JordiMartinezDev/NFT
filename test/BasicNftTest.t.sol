@@ -1,53 +1,63 @@
-//SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: MIT
 
+pragma solidity ^0.8.19;
 
-pragma solidity ^0.8.18;
-
-import {Test} from "../lib/forge-std/src/Test.sol";
 import {DeployBasicNft} from "../script/DeployBasicNft.s.sol";
 import {BasicNft} from "../src/BasicNft.sol";
+import {Test, console} from "forge-std/Test.sol";
+import {StdCheats} from "forge-std/StdCheats.sol";
+import {MintBasicNft} from "../script/Interactions.s.sol";
 
-contract BasicNftTest is Test{
-
-    DeployBasicNft public deployer;
+contract BasicNftTest is StdCheats, Test {
+    string constant NFT_NAME = "Dogie";
+    string constant NFT_SYMBOL = "DOG";
     BasicNft public basicNft;
-    address public USER = makeAddr("user");
-    string public constant patonIpfsImgUrl = "https://i.pinimg.com/originals/66/03/b7/6603b76f5332cfe06c72688028a9f1b2.png";
+    DeployBasicNft public deployer;
+    address public deployerAddress;
 
-    function setUp() public{
+    string public constant PUG_URI =
+        "ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json";
+    address public constant USER = address(1);
+
+    function setUp() public {
         deployer = new DeployBasicNft();
         basicNft = deployer.run();
     }
 
-    function testNameIsCorrect() public view{
-
-        string memory expectedName = "Patons";
-        string memory actualName = basicNft.name();
-
-        //To compare the two strings, we will need to compare their hashes. Hashes of their abi.encodePacked
-
-        assert(keccak256(abi.encodePacked(expectedName)) == keccak256(abi.encodePacked(actualName)));
-
+    function testInitializedCorrectly() public view {
+        assert(
+            keccak256(abi.encodePacked(basicNft.name())) ==
+                keccak256(abi.encodePacked((NFT_NAME)))
+        );
+        assert(
+            keccak256(abi.encodePacked(basicNft.symbol())) ==
+                keccak256(abi.encodePacked((NFT_SYMBOL)))
+        );
     }
 
-    function testSymbolIsCorrect() public view {
-        string memory expectedSymbol = "PTNS";
-        string memory actualSymbol = basicNft.symbol();
-        assertStringsEqual(expectedSymbol, actualSymbol, "Incorrect symbol");
-    }
-
-    
-    function testCanMintAndHaveBalance() public{
+    function testCanMintAndHaveABalance() public {
         vm.prank(USER);
-        basicNft.mintNft(patonIpfsImgUrl);
+        basicNft.mintNft(PUG_URI);
 
         assert(basicNft.balanceOf(USER) == 1);
-        assert(keccak256(abi.encodePacked(patonIpfsImgUrl)) == keccak256(abi.encodePacked(basicNft.tokenURI(0))));
-
     }
 
-    function assertStringsEqual(string memory expected, string memory actual, string memory message) internal pure {
-        assert(keccak256(abi.encodePacked(expected)) == keccak256(abi.encodePacked(actual)), message);
+    function testTokenURIIsCorrect() public {
+        vm.prank(USER);
+        basicNft.mintNft(PUG_URI);
+
+        assert(
+            keccak256(abi.encodePacked(basicNft.tokenURI(0))) ==
+                keccak256(abi.encodePacked(PUG_URI))
+        );
     }
 
+    function testMintWithScript() public {
+        uint256 startingTokenCount = basicNft.getTokenCounter();
+        MintBasicNft mintBasicNft = new MintBasicNft();
+        mintBasicNft.mintNftOnContract(address(basicNft));
+        assert(basicNft.getTokenCounter() == startingTokenCount + 1);
+    }
+
+    // can you get the coverage up?
 }
